@@ -1,0 +1,27 @@
+{
+    "course-code": "string", 
+    "title": "string", 
+    "day-times": "string", 
+    "lectures": [
+        {
+            "date": "Day, Month Date", 
+            "description": "string", 
+            "assigned readings": ["string"]
+        }
+    ], 
+    "assessments": [
+        { 
+            "date": "string", 
+            "time": "string", 
+            "description": "string", 
+            "grade-worth": "string"
+        }
+    ], 
+    "required-materials": [
+        {
+            "title": "string", 
+            "author": "string", 
+            "description": "string"
+        }
+    ]
+}
