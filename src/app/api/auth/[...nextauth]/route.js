@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
+import db from "@/utils/db.js"
 
 const handler = NextAuth({
   providers: [
@@ -27,6 +28,24 @@ const handler = NextAuth({
         session.accessToken = token.accessToken;
       }
       return session;
+    },
+    async signIn(user, account, profile) {
+      try {
+        const usersCollection = db.collection('users');
+
+        const existingUser = await usersCollection.findOne({ email: user.email });
+
+        if (!existingUser) {
+          await usersCollection.insertOne({
+            email: user.email,
+            name: user.name
+          });
+        }
+
+        return true
+      } catch (err) {
+        console.log(err)
+      }
     }
   },
   debug: true,

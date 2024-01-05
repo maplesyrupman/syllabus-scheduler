@@ -15,7 +15,7 @@ export default function Home() {
         <title>Syllabus Scheduler</title>
       </Head>
 
-      <div className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div className="">
         <div className='flex flex-col'>
           <h1>Syllabus Scheduler!</h1>
 
