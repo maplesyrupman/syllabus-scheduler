@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-import db from "@/utils/db.js"
+import connectToDatabase from "@/lib/db"
 
 const handler = NextAuth({
   providers: [
@@ -23,22 +23,32 @@ const handler = NextAuth({
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token}) {
       if (!session.accessToken) {
         session.accessToken = token.accessToken;
       }
-      return session;
+
+      const db = await connectToDatabase()
+      const userCollection = db.collection('users')
+
+      const mongoUser = await userCollection.findOne({email: session.user.email})
+      return {
+        ...session, 
+        user: {
+          ...mongoUser
+        }
+      };
     },
     async signIn(user, account, profile) {
+      const db = await connectToDatabase().catch(error => console.log(error))
+      const users = db.collection('users')
       try {
-        const usersCollection = db.collection('users');
-
-        const existingUser = await usersCollection.findOne({ email: user.email });
+        const existingUser = await users.findOne({ email: user.email });
 
         if (!existingUser) {
-          await usersCollection.insertOne({
+          await users.insertOne({
             email: user.email,
-            name: user.name
+            name: user.name,
           });
         }
 
