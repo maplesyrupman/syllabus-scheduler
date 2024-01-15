@@ -1,7 +1,10 @@
-export default function Dashboard(){
+import { Suspense } from "react"
+import DashboardLayout from "./layout"
+
+export default function Dashboard({ children }: { children: React.ReactNode }) {
     return (
-            <div>
-                <h1>Dashboard</h1>
-            </div>
+        <Suspense>
+            {children}
+        </Suspense>
     )
 }
