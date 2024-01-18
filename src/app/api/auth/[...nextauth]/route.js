@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import connectToDatabase from "@/lib/db"
 
-const handler = NextAuth({
+const authConfig = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -60,6 +60,8 @@ const handler = NextAuth({
   },
   debug: true,
   secret: process.env.NEXTAUTH_SECRET
-})
+}
 
-export { handler as GET, handler as POST }
+const handler = NextAuth(authConfig)
+
+export { handler as GET, handler as POST, authConfig }

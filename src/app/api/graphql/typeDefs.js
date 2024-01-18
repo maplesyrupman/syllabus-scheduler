@@ -48,7 +48,7 @@ const typeDefs = gql`
   type Query {
     hello: String
     courseByCode(courseCode: String!): Course 
-    schedule(scheduleID: ID!): Schedule
+    schedule: Schedule
     # calendar: Calendar 
   }
 

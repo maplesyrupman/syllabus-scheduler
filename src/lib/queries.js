@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export const SCHEDULE = gql`
-query schedule($scheduleId: ID!) {
-  schedule(scheduleID: $scheduleId) {
+query schedule {
+  schedule {
     _id
     courses {
       _id
