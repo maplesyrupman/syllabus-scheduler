@@ -1,6 +1,5 @@
 "use client"
 import Link from "next/link"
-
 import { usePathname } from 'next/navigation'
 
 //@ts-ignore
@@ -9,7 +8,6 @@ function classNames(...classes) {
 }
 
 export default function Views() {
-
     const pathName = usePathname()
 
     const woPath = '/dashboard/weekly-overview'
@@ -19,7 +17,6 @@ export default function Views() {
         { name: 'Courses', href: cPath, current: cPath === pathName },
     ]
 
-    console.log(pathName)
     return (
         <div>
             <div className="sm:block">

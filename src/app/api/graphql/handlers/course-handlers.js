@@ -8,4 +8,3 @@ export async function getSingleCourse(courseCode) {
 
     return course
 }
-

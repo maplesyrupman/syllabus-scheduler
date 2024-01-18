@@ -32,21 +32,23 @@ const typeDefs = gql`
     requiredMaterials: [RequiredMaterial]
   }
 
-  type User {
-    _id: ID
-    name: String 
-    courses: [Course] 
+  type Shift {
+    start: String
+    end: String 
+    description: String 
   }
 
-  type Calendar {
+  type Schedule {
+    _id: ID 
     courses: [Course]
+    shifts: [Shift] 
   }
 
 
   type Query {
     hello: String
     courseByCode(courseCode: String!): Course 
-
+    schedule(scheduleID: ID!): Schedule
     # calendar: Calendar 
   }
 

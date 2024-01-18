@@ -1,14 +1,21 @@
 import { getSingleCourse } from "./handlers/course-handlers";
+import connectToDatabase from "@/lib/db";
+import { ObjectId } from "mongodb";
 
 const resolvers = {
     Query: {
         hello: () => "Hello world!",
         courseByCode: async (parent, args, context, info) => {
-            console.log('Args:', args); // Log the arguments
             const result = await getSingleCourse(args.courseCode);
-            console.log('Result:', result); // Log the result
             return result;
-        }
+        },
+        schedule: async (parent, args, context, info) => {
+            const db = await connectToDatabase()
+            const scheduleId = null
+            const Schedule = db.collection('schedule')
+            const schedule = await Schedule.findOne({ _id: new ObjectId(scheduleId) })
+            return schedule
+        },
     },
 };
 

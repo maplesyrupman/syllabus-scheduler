@@ -8,10 +8,10 @@ export default function ProvidersWrapper({
     children: React.ReactNode
 }) {
     return (
-        <ApolloWrapper>
-            <SessionProvider>
+        <SessionProvider>
+            <ApolloWrapper>
                 {children}
-            </SessionProvider>
-        </ApolloWrapper>
+            </ApolloWrapper>
+        </SessionProvider>
     )
 }
