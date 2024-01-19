@@ -8,16 +8,19 @@ import { AuthContext } from "./context"
 export default function DashboardLayout({ children, }: { children: React.ReactNode }) {
     const { data, loading, error } = useQuery(SCHEDULE)
 
-    if (data) console.log(data)
-    else if (loading) console.log(loading)
-    else if (error) console.log(error)
-
-    return (
-        <section>
-            <AuthContext.Provider value={{data,loading,error}}>
-                <ViewSelector />
-                {children}
-            </AuthContext.Provider>
-        </section>
-    )
+    if (loading) {
+        return <div>Loading...</div>
+    }
+    else if (data) {
+        return (
+            <section>
+                <AuthContext.Provider value={data}>
+                    <ViewSelector />
+                    {children}
+                </AuthContext.Provider>
+            </section>
+        )
+    } else {
+        return <div>There was an error Fetching your data!</div>
+    }
 }

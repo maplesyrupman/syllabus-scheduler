@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const AuthContext = createContext<null|{data:any,loading:boolean,error:any}>(null)
+export const AuthContext = createContext<null|any>(null)

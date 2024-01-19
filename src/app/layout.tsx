@@ -18,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className='h-full'>
       <ProvidersWrapper>
-        <body className={inter.className}>
+        <body className={`${inter.className} h-full`}>
           <Nav />
           <main className='min-h-screen'>
             {children}

@@ -19,7 +19,7 @@ export default function Example() {
                     </div>
                 </Menu.Button>
             </div>
-
+            
             <Transition
                 as={Fragment}
                 enter="transition ease-out duration-100"
@@ -34,7 +34,7 @@ export default function Example() {
                         <Menu.Item>
                             {({ active }) => (
                                 <Link
-                                    href="/dashboard"
+                                    href="/dashboard/weekly-overview"
                                     className={classNames(
                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
@@ -73,7 +73,6 @@ export default function Example() {
                             )}
                         </Menu.Item>
                     </div>
-
                 </Menu.Items>
             </Transition>
         </Menu>
