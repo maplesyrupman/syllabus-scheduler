@@ -49,7 +49,7 @@ const typeDefs = gql`
     hello: String
     courseByCode(courseCode: String!): Course 
     schedule: Schedule
-    # calendar: Calendar 
+    courses: [Course]
   }
 
 `

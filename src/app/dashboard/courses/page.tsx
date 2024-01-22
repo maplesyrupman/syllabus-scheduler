@@ -11,7 +11,7 @@ export default function Courses() {
         return <NoCourses />
     } else {
         return (
-            <div>Weekly Overview</div>
+            <div>Courses</div>
         )
     }
 }

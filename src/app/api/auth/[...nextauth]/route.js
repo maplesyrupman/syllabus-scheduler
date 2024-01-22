@@ -43,7 +43,7 @@ const authConfig = {
       const db = await connectToDatabase().catch(error => console.log(error))
       const users = db.collection('users')
       try {
-        const existingUser = await users.findOne({ email: user.email });
+        const existingUser = await users.findOne({ email: user.user.email });
 
         if (!existingUser) {
           await users.insertOne({
@@ -54,7 +54,7 @@ const authConfig = {
 
         return true
       } catch (err) {
-        console.log(err)
+        console.log('error: ',err)
       }
     }
   },
