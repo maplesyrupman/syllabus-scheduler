@@ -30,16 +30,12 @@ query schedule {
 }
 `
 
-export const SCHEDULE_TEST = gql`
-query schedule($scheduleId: ID!) {
-  schedule(scheduleId: $scheduleId) {
+export const COURSES = gql`
+query courses {
+  courses {
     _id
+    title 
+    courseCode 
   }
-}
-`
-
-export const HELLO = gql`
-query hello {
-  hello
 }
 `
