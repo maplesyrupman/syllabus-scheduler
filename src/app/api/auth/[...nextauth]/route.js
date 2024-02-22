@@ -40,6 +40,7 @@ const authConfig = {
       };
     },
     async signIn(user, account, profile) {
+      console.log('client id', process.env.GOOGLE_CLIENT_ID)
       const db = await connectToDatabase().catch(error => console.log(error))
       const users = db.collection('users')
       try {

@@ -5,18 +5,18 @@ import pdfcrowd from 'pdfcrowd'
 import path from "path";
 
 export async function GET(req: NextRequest) {
-
     try {
         const db = await connectToDatabase()
         console.log('inroute')
 
         const usersCollection = db.collection('users')
         
-        const user = await usersCollection.findOne({email: "will.sj.weiland@gmail.com"})
-        if (user) {
-            console.log(user)
-        }
-        return NextResponse.json({user})
+        // const user = await usersCollection.findOne({email: "will.sj.weiland@gmail.com"})
+        // if (user) {
+        //     console.log(user)
+        // }
+        // console.log('env var:', process.env.NEXTAUTH_SECRET)
+        return NextResponse.json({message: 'success'})
     } catch (err) {
         console.log(err)
         return NextResponse.json({err}, {status: 500})

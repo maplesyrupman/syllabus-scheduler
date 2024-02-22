@@ -32,7 +32,7 @@ const resolvers = {
                     { $match: { schoolID: new ObjectId(schoolID) } }
                 ]).toArray()
 
-                console.log('courses:',courses)
+                console.log('courses:', courses)
 
                 return courses
             } catch (error) {
@@ -41,6 +41,18 @@ const resolvers = {
             }
         }
     },
+    Mutation: {
+        addCourses: async (parent, args, context, info) => {
+            const db = await connectToDatabase()
+
+            console.log(args)
+
+            const scheduleID = context.user.scheduleID
+            const Schedule = db.collection('schedule')
+            const schedule = await Schedule.findOne({ _id: new ObjectId(scheduleID) })
+            return schedule
+        }
+    }
 };
 
 export default resolvers 

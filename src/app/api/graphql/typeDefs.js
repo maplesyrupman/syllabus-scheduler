@@ -52,6 +52,10 @@ const typeDefs = gql`
     courses: [Course]
   }
 
+  type Mutation {
+    addCourses(courses: string[]!): Schedule
+  }
+
 `
 
 export default typeDefs 
